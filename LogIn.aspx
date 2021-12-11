@@ -17,7 +17,7 @@
                 <asp:Label runat="server" Text="Enter Password"></asp:Label>
                 <asp:TextBox runat="server" ID="UPass"></asp:TextBox>
             </div>
-            <asp:Button runat="server" Text="Log-In" OnClick="LogIn_Click" />
+            <asp:Button runat="server" ForeColor="BlueViolet" Text="Log-In" OnClick="LogIn_Click" />
         </div>
     </form>
 </body>
