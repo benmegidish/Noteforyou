@@ -13,13 +13,13 @@
            <div>
                <h1>Note list For You</h1>
                Search: <asp:TextBox runat="server" ID="Searchtxt" ></asp:TextBox>
-               <asp:Button runat="server" ID="BtnSrch" Text="Search" OnClick="Search_click" />
+               <asp:Button runat="server" ID="BtnSrch" Text="Search" ForeColor="Blue" OnClick="Search_click" />
                Sort:
                <asp:DropDownList runat="server" ID="Sort">
                    <asp:ListItem Value="0">HIGH-Priority</asp:ListItem>
                    <asp:ListItem Value="1">Low-Priority</asp:ListItem>
                </asp:DropDownList>
-               <asp:Button runat="server" Text="Sort" OnClick="Unnamed_Click" />
+               <asp:Button runat="server" Text="Sort" ForeColor="Blue" OnClick="Unnamed_Click" />
 
            </div>
             <div>
@@ -30,8 +30,8 @@
                      <asp:ListItem Value="3">3</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <asp:Button runat="server" ID="CRT" Text="Create" OnClick="Create_Click" />
-            <asp:Button runat="server" ID="UPD" Text="Update" OnClick="Update_Click" Visible="false"/>
+            <asp:Button runat="server" ID="CRT" ForeColor="GreenYellow" Text="Create" OnClick="Create_Click" />
+            <asp:Button runat="server" ID="UPD" ForeColor="Green" Text="Update" OnClick="Update_Click" Visible="false"/>
         </div>
         <div>
             <asp:Repeater ID="RPT" runat="server">
@@ -60,13 +60,13 @@
                             <td style="border:solid 2px black">
                                 <asp:Label runat="server" ID="SortNote" Text="Notes"></asp:Label>
                             </td>
-                            <td style="border:solid 2px black">
+                            <td style="border:solid 2px black; flex-wrap:wrap">
                                 <asp:Label runat="server" ID="Notus" Width="300px" Text='<%#Eval("Note") %>'></asp:Label>
                             </td>
                         </tr>
                     </table>
-                    <asp:LinkButton CssClass="color:red" Text="Delete" runat="server" OnClick="Delete_Click"/>
-                    <asp:LinkButton CssClass="color:green" Text="Edit" runat="server" OnClick="Edit_click"/>
+                    <asp:LinkButton ForeColor="Red" Text="Delete" runat="server" OnClick="Delete_Click"/>
+                    <asp:LinkButton ForeColor="Orange" Text="Edit" runat="server" OnClick="Edit_click"/>
                 </ItemTemplate>
             </asp:Repeater>
         </div>

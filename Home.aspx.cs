@@ -113,7 +113,6 @@ namespace WebApplication13
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constring"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Notes_Table where USERID='"+Session["id"]+"' and Note like '%"+Searchtxt.Text+"%'", con);
-            //cmd.ExecuteNonQuery();
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.HasRows)
             { 
