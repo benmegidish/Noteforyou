@@ -30,7 +30,7 @@
                      <asp:ListItem Value="3">3</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <asp:Button runat="server" ID="CRT" ForeColor="GreenYellow" Text="Create" OnClick="Create_Click" />
+            <asp:Button runat="server" ID="CRT" ForeColor="Green" Text="Create" OnClick="Create_Click" />
             <asp:Button runat="server" ID="UPD" ForeColor="Green" Text="Update" OnClick="Update_Click" Visible="false"/>
         </div>
         <div>

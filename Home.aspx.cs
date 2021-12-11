@@ -35,9 +35,18 @@ namespace WebApplication13
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constring"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("insert into Notes_Table(Importance,Note,UserID) values('"+Importance.SelectedValue+ "','"+UNote.Text+"','" + Session["id"] + "')",con);
-            cmd.ExecuteNonQuery();
-            LoadNotes(); 
+            if (UNote.Text=="")
+            {
+                Response.Write("<script>alert('Can Not Create a new Note Without Text');</script>");
+            }
+            else
+            { 
+                SqlCommand cmd = new SqlCommand("insert into Notes_Table(Importance,Note,UserID) values('"+Importance.SelectedValue+ "','"+UNote.Text+"','" + Session["id"] + "')",con);
+                cmd.ExecuteNonQuery();
+                LoadNotes();
+                UNote.Text = "";
+                Importance.SelectedValue ="1";
+            }
         }
 
         public void LoadNotes()
@@ -105,6 +114,7 @@ namespace WebApplication13
             LoadNotes();
             UPD.Visible = false;
             CRT.Visible = true;
+            UNote.Text = "";
         }
         
         protected void Search_click(object sender, EventArgs e)
@@ -124,6 +134,7 @@ namespace WebApplication13
             {
                 Response.Write("<script>alert('No Records has found');</script>");
             }
+            Searchtxt.Text = "";
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)
