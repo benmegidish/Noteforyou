@@ -15,16 +15,19 @@ namespace WebApplication13
         protected void Page_Load(object sender, EventArgs e)
         {
             Hello.Text = "Hello Dear " + Session["name"].ToString() + "";
-            
-                LoadNotes();
-            
-            if (UNote.Text == null)
+
+            if (!IsPostBack)
+            { 
+            LoadNotes();
+            }
+
+            if (UNote.Text == UNote.Text+"")
             {
-                CRT.Enabled = false;
+                CRT.Enabled = true;
             }
             else
             {
-                CRT.Enabled = true;
+                CRT.Enabled = false;
             }
         }
 
@@ -41,7 +44,7 @@ namespace WebApplication13
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constring"].ConnectionString);
             con.Open();
-            if (Sort.SelectedValue == "1")
+            if (Sort.SelectedValue == "0")
             {
                 SqlCommand cmd = new SqlCommand("select * from Notes_Table where UserID='" + Session["id"] + "' order by Importance desc", con);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -109,9 +112,19 @@ namespace WebApplication13
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constring"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Notes_Table where UserID='"+Session["id"]+"' and Note=*'"+Searchtxt.Text+"'*,", con);
-            cmd.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand("select * from Notes_Table where USERID='"+Session["id"]+"' and Note like '%"+Searchtxt.Text+"%'", con);
+            //cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            { 
+            RPT.DataSource = dr;
+            RPT.DataBind();
             con.Close();
+            }
+            else
+            {
+                Response.Write("<script>alert('No Records has found');</script>");
+            }
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)

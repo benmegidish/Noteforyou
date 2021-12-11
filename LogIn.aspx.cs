@@ -38,8 +38,6 @@ namespace WebApplication13
                 {
                     Response.Write("<script>alert('invalid info');</script>");
                 }
-                
-                
             }
             catch
             {
